@@ -1,28 +1,25 @@
-pages/index.js
+// pages/index.js
 // pages/index.js
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import logo from '../public/logo.png'; // reemplaza con tu logo
-import { FaShoppingCart } from 'react-icons/fa'; // ícono de carrito
+import { FaShoppingCart } from 'react-icons/fa';
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
-      {/* Header / Menú fijo */}
+      {/* Header / Menú */}
       <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/90 shadow-lg' : 'bg-black/60'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
           <div className="flex items-center space-x-2">
-            <Image src={logo} alt="CERREDES" width={50} height={50} />
+            <Image src="/logo.png" alt="CERREDES" width={120} height={60} />
             <span className="text-xl font-bold">CERREDES</span>
           </div>
           <nav className="flex items-center space-x-6">
@@ -30,7 +27,6 @@ export default function Home() {
             <a href="#servicios" className="hover:text-orange-500 transition">Servicios</a>
             <a href="#productos" className="hover:text-orange-500 transition">Productos</a>
             <a href="#contacto" className="hover:text-orange-500 transition">Contacto</a>
-            {/* Carrito de compras */}
             <FaShoppingCart className="ml-4 text-orange-500 text-2xl cursor-pointer hover:text-orange-600 transition" />
           </nav>
         </div>
@@ -113,3 +109,4 @@ export default function Home() {
     </div>
   );
 }
+
